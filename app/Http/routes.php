@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 // callback
-Route::match(array('GET', 'POST'), 'callback', 'CallbackController@index');
+Route::post('callback', 'CallbackController@index');
