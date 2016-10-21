@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// callback
+Route::match(array('GET', 'POST'), 'callback', 'CallbackController@index');
