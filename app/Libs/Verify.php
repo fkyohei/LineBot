@@ -9,6 +9,12 @@ use LINE\LINEBot\Exception\UnknownEventTypeException;
 use LINE\LINEBot\Exception\UnknownMessageTypeException;
 use LINE\LINEBot\HTTPClient\GuzzleHTTPClient;
 
+/**
+ * 署名検証実施クラス
+ *
+ * @package App\Libs
+ * @Copyright 2016 fkyohei
+ */
 class Verify
 {
     /**
@@ -28,8 +34,7 @@ class Verify
             return $mix_result;
         }
 
-        $obj_http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
-        $obj_bot = new \LINE\LINEBot($obj_http_client, ['channelSecret' => getenv('CHANNEL_SECRET')]);
+        $obj_bot = \App\Libs\LineBotManager::getInstance();
 
         // Check request with signature and parse request
         try {
