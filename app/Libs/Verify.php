@@ -8,7 +8,6 @@ use LINE\LINEBot\Exception\InvalidSignatureException;
 use LINE\LINEBot\Exception\UnknownEventTypeException;
 use LINE\LINEBot\Exception\UnknownMessageTypeException;
 use LINE\LINEBot\HTTPClient\GuzzleHTTPClient;
-use Log;
 
 class Verify
 {
