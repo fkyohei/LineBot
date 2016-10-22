@@ -30,6 +30,6 @@ class CallbackController extends Controller
         }
         Log::debug(print_r($mix_result, true));
         \App\Libs\Analyze::execute($mix_result['events']);
-        return view('callback.index');
+        return response()->json([]);
     }
 }
