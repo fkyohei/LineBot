@@ -13,6 +13,7 @@ class TextMessageManager
     const TEXT_PARROT  = 'オウム返し';
     const TEXT_IMAGE   = '画像';
     const TEXT_STICKER = 'スタンプ';
+    const TEXT_TEMPLATE_BUTTON = 'ボタンテンプレート';
 
     /**
      * テキストメッセージに返信をする
@@ -33,6 +34,9 @@ class TextMessageManager
         } elseif($str_text == self::TEXT_STICKER) {
             // スタンプ
             \App\Libs\StickerMessageManager::send_sticker_reply($obj_event);
+        } elseif($str_text == self::TEXT_TEMPLATE_BUTTON) {
+            // ボタンテンプレート
+            \App\Libs\ButtonTemplateMessageManager::send_button_template_reply($obj_event);
         } else {
             // ヘルプ
             self::_send_help_reply($obj_event);
@@ -87,7 +91,8 @@ class TextMessageManager
         $str_text = "【ヘルプ】\n"
             . "・".self::TEXT_PARROT."\n"
             . "・".self::TEXT_IMAGE."\n"
-            . "・".self::TEXT_STICKER;
+            . "・".self::TEXT_STICKER."\n"
+            . "・".self::TEXT_TEMPLATE_BUTTON;
         // 返信
         $obj_response = $obj_bot->replyText($str_reply_token, $str_text);
         Log::debug(print_r($obj_response, true));
