@@ -10,9 +10,9 @@ use Log;
  */
 class TextMessageManager
 {
-    const TEXT_HELP   = 'ヘルプ';
-    const TEXT_PARROT = 'オウム返し';
-    const TEXT_IMAGE  = '画像';
+    const TEXT_PARROT  = 'オウム返し';
+    const TEXT_IMAGE   = '画像';
+    const TEXT_STICKER = 'スタンプ';
 
     /**
      * テキストメッセージに返信をする
@@ -30,6 +30,9 @@ class TextMessageManager
         } elseif($str_text == self::TEXT_IMAGE) {
             // 画像
             \App\Libs\ImageMessageManager::send_image_reply($obj_event);
+        } elseif($str_text == self::TEXT_STICKER) {
+            // スタンプ
+            \App\Libs\StickerMessageManager::send_sticker_reply($obj_event);
         } else {
             // ヘルプ
             self::_send_help_reply($obj_event);
@@ -81,7 +84,10 @@ class TextMessageManager
         // 返信相手のトークン取得
         $str_reply_token = $obj_event[0]->getReplyToken();
         // 返信テキスト
-        $str_text = "【ヘルプ】\n・オウム返し\n・画像";
+        $str_text = "【ヘルプ】\n"
+            . "・".self::TEXT_PARROT."\n"
+            . "・".self::TEXT_IMAGE."\n"
+            . "・".self::TEXT_STICKER;
         // 返信
         $obj_response = $obj_bot->replyText($str_reply_token, $str_text);
         Log::debug(print_r($obj_response, true));
