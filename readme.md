@@ -13,3 +13,4 @@
 - Template
     - Button
     - Confirm
+    - Carousel

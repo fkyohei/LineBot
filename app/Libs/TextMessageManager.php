@@ -13,8 +13,9 @@ class TextMessageManager
     const TEXT_PARROT  = 'オウム返し';
     const TEXT_IMAGE   = '画像';
     const TEXT_STICKER = 'スタンプ';
-    const TEXT_TEMPLATE_BUTTON  = 'ボタンテンプレート';
-    const TEXT_TEMPLATE_CONFIRM = '提示型テンプレート';
+    const TEXT_TEMPLATE_BUTTON   = 'ボタンテンプレート';
+    const TEXT_TEMPLATE_CONFIRM  = '提示型テンプレート';
+    const TEXT_TEMPLATE_CAROUSEL = 'カルーセル型テンプレート';
 
     /**
      * テキストメッセージに返信をする
@@ -39,7 +40,11 @@ class TextMessageManager
             // ボタンテンプレート
             ButtonTemplateMessageManager::send_button_template_reply($obj_event);
         } elseif($str_text == self::TEXT_TEMPLATE_CONFIRM) {
+            // 提示型テンプレート
             ConfirmTemplateMessageManager::send_confirm_template_reply($obj_event);
+        } elseif($str_text == self::TEXT_TEMPLATE_CAROUSEL) {
+            // カルーセル型テンプレート
+            CarouselTemplateMessageManager::send_carousel_template_reply($obj_event);
         } else {
             // ヘルプ
             self::_send_help_reply($obj_event);
@@ -96,7 +101,8 @@ class TextMessageManager
                   . "・".self::TEXT_IMAGE."\n"
                   . "・".self::TEXT_STICKER."\n"
                   . "・".self::TEXT_TEMPLATE_BUTTON."\n"
-                  . "・".self::TEXT_TEMPLATE_CONFIRM;
+                  . "・".self::TEXT_TEMPLATE_CONFIRM."\n"
+                  . "・".self::TEXT_TEMPLATE_CAROUSEL;
         // 返信
         $obj_response = $obj_bot->replyText($str_reply_token, $str_text);
         Log::debug(print_r($obj_response, true));

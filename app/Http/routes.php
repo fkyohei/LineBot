@@ -11,9 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // callback
 Route::post('callback', 'CallbackController@index');
