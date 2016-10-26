@@ -36,8 +36,10 @@ class ButtonTemplateMessageManager
         $obj_button1 = new TemplateActionBuilder\UriTemplateActionBuilder('google', 'http://google.com');
         // ボタン2
         $obj_button2 = new TemplateActionBuilder\PostbackTemplateActionBuilder('feedback', 'feedback=1');
+        // ボタン3
+        $obj_button3 = new TemplateActionBuilder\MessageTemplateActionBuilder('ボタンラベル', 'ボタンテキスト');
         // ボタンテンプレート生成
-        $obj_button_template = new ButtonTemplateBuilder($str_title, $str_text, $str_image_url, [$obj_button1, $obj_button2]);
+        $obj_button_template = new ButtonTemplateBuilder($str_title, $str_text, $str_image_url, [$obj_button1, $obj_button2, $obj_button3]);
         $obj_template_message = new TemplateMessageBuilder('メッセージ', $obj_button_template);
         // 返信
         $obj_response = $obj_bot->replyMessage($str_reply_token, $obj_template_message);
