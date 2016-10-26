@@ -13,7 +13,8 @@ class TextMessageManager
     const TEXT_PARROT  = 'オウム返し';
     const TEXT_IMAGE   = '画像';
     const TEXT_STICKER = 'スタンプ';
-    const TEXT_TEMPLATE_BUTTON = 'ボタンテンプレート';
+    const TEXT_TEMPLATE_BUTTON  = 'ボタンテンプレート';
+    const TEXT_TEMPLATE_CONFIRM = '提示型テンプレート';
 
     /**
      * テキストメッセージに返信をする
@@ -30,13 +31,15 @@ class TextMessageManager
             self::_send_parrot_reply($obj_event);
         } elseif($str_text == self::TEXT_IMAGE) {
             // 画像
-            \App\Libs\ImageMessageManager::send_image_reply($obj_event);
+            ImageMessageManager::send_image_reply($obj_event);
         } elseif($str_text == self::TEXT_STICKER) {
             // スタンプ
-            \App\Libs\StickerMessageManager::send_sticker_reply($obj_event);
+            StickerMessageManager::send_sticker_reply($obj_event);
         } elseif($str_text == self::TEXT_TEMPLATE_BUTTON) {
             // ボタンテンプレート
-            \App\Libs\ButtonTemplateMessageManager::send_button_template_reply($obj_event);
+            ButtonTemplateMessageManager::send_button_template_reply($obj_event);
+        } elseif($str_text == self::TEXT_TEMPLATE_CONFIRM) {
+            ConfirmTemplateMessageManager::send_confirm_template_reply($obj_event);
         } else {
             // ヘルプ
             self::_send_help_reply($obj_event);
@@ -65,7 +68,7 @@ class TextMessageManager
      */
     private static function _send_parrot_reply($obj_event)
     {
-        $obj_bot = \App\Libs\LineBotManager::getInstance();
+        $obj_bot = LineBotManager::getInstance();
         // 返信相手のトークン取得
         $str_reply_token = $obj_event[0]->getReplyToken();
         // 返信テキスト
@@ -84,15 +87,16 @@ class TextMessageManager
      */
     private static function _send_help_reply($obj_event)
     {
-        $obj_bot = \App\Libs\LineBotManager::getInstance();
+        $obj_bot = LineBotManager::getInstance();
         // 返信相手のトークン取得
         $str_reply_token = $obj_event[0]->getReplyToken();
         // 返信テキスト
         $str_text = "【ヘルプ】\n"
-            . "・".self::TEXT_PARROT."\n"
-            . "・".self::TEXT_IMAGE."\n"
-            . "・".self::TEXT_STICKER."\n"
-            . "・".self::TEXT_TEMPLATE_BUTTON;
+                  . "・".self::TEXT_PARROT."\n"
+                  . "・".self::TEXT_IMAGE."\n"
+                  . "・".self::TEXT_STICKER."\n"
+                  . "・".self::TEXT_TEMPLATE_BUTTON."\n"
+                  . "・".self::TEXT_TEMPLATE_CONFIRM;
         // 返信
         $obj_response = $obj_bot->replyText($str_reply_token, $str_text);
         Log::debug(print_r($obj_response, true));

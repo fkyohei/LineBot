@@ -13,7 +13,7 @@ use \LINE\LINEBot\Event\MessageEvent\TextMessage;
 class Analyze
 {
     const EVENT_TYPE_MESSAGE = 'message';
-    const EVENT_TYPE_TEXT = 'text';
+    const EVENT_TYPE_TEXT    = 'text';
 
     /**
      * イベント解析の実行
@@ -31,7 +31,7 @@ class Analyze
         //// イベント詳細タイプ毎に処理を実行
         // テキストメッセージ
         if(self::_get_event_detail_type($obj_event) == self::EVENT_TYPE_TEXT) {
-            \App\Libs\TextMessageManager::reply($obj_event);
+            TextMessageManager::reply($obj_event);
         }
     }
 

@@ -21,7 +21,7 @@ class StickerMessageManager
      */
     public static function send_sticker_reply($obj_event)
     {
-        $obj_bot = \App\Libs\LineBotManager::getInstance();
+        $obj_bot = LineBotManager::getInstance();
         // 返信相手のトークン取得
         $str_reply_token = $obj_event[0]->getReplyToken();
         // パッケージ番号

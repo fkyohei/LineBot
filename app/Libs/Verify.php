@@ -33,8 +33,7 @@ class Verify
             $mix_result['error_message'] = 'Bad Request';
             return $mix_result;
         }
-
-        $obj_bot = \App\Libs\LineBotManager::getInstance();
+        $obj_bot = LineBotManager::getInstance();
 
         // Check request with signature and parse request
         try {

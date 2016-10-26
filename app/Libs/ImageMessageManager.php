@@ -20,7 +20,7 @@ class ImageMessageManager
      */
     public static function send_image_reply($obj_event)
     {
-        $obj_bot = \App\Libs\LineBotManager::getInstance();
+        $obj_bot = LineBotManager::getInstance();
         // 返信相手のトークン取得
         $str_reply_token = $obj_event[0]->getReplyToken();
         // 画像URL生成
