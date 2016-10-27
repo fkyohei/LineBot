@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89
+class ComposerStaticInitb78b5e5b85c94a6ec11303e757cf0bb8
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -285,6 +285,15 @@ class ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
+        'App\\Libs\\Analyze' => __DIR__ . '/../..' . '/app/Libs/Analyze.php',
+        'App\\Libs\\ButtonTemplateMessageManager' => __DIR__ . '/../..' . '/app/Libs/ButtonTemplateMessageManager.php',
+        'App\\Libs\\CarouselTemplateMessageManager' => __DIR__ . '/../..' . '/app/Libs/CarouselTemplateMessageManager.php',
+        'App\\Libs\\ConfirmTemplateMessageManager' => __DIR__ . '/../..' . '/app/Libs/ConfirmTemplateMessageManager.php',
+        'App\\Libs\\ImageMessageManager' => __DIR__ . '/../..' . '/app/Libs/ImageMessageManager.php',
+        'App\\Libs\\LineBotManager' => __DIR__ . '/../..' . '/app/Libs/LineBotManager.php',
+        'App\\Libs\\StickerMessageManager' => __DIR__ . '/../..' . '/app/Libs/StickerMessageManager.php',
+        'App\\Libs\\TextMessageManager' => __DIR__ . '/../..' . '/app/Libs/TextMessageManager.php',
+        'App\\Libs\\Verify' => __DIR__ . '/../..' . '/app/Libs/Verify.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
@@ -3038,10 +3047,10 @@ class ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitcfc73a1ccb746a1c336bbb9c02f8ef89::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb78b5e5b85c94a6ec11303e757cf0bb8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb78b5e5b85c94a6ec11303e757cf0bb8::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb78b5e5b85c94a6ec11303e757cf0bb8::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb78b5e5b85c94a6ec11303e757cf0bb8::$classMap;
 
         }, null, ClassLoader::class);
     }
